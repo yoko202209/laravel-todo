@@ -27,7 +27,7 @@ class GoalController extends Controller
      */
     public function create()
     {
-        //
+        return view('goals.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class GoalController extends Controller
      */
     public function show(Goal $goal)
     {
-        //
+        return view('goals.show',compact('goal'));
     }
 
     /**
@@ -72,7 +72,7 @@ class GoalController extends Controller
      */
     public function edit(Goal $goal)
     {
-        //
+        return view('goals.edit',compact('goal'));
     }
 
     /**
