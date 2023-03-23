@@ -41,12 +41,14 @@ class GoalController extends Controller
         $request->validate([
             'title' => 'required',
         ]);
+
+        
         
         $goal = new Goal();
         $goal->title = $request->input('title');
         $goal->user_id = Auth::id();
         $goal->dead_line = $request->input('dead_line');
-        $goal->is_share = $request->input('is_share');
+        $goal->is_share = $request->input('is_share') ? true:false;
         $goal->save();
 
         return redirect()->route('goals.index');
