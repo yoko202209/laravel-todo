@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GoalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('goals', 'GoalController');
+Route::resource('goals', GoalController::class);
