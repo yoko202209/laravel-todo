@@ -38,9 +38,11 @@ class GoalController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->title);
+
+
         $request->validate([
             'title' => 'required',
-            'is_share' => 'required',
         ]);
         
         $goal = new Goal();

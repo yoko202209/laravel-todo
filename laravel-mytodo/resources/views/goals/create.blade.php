@@ -18,11 +18,11 @@
           @csrf
           <div>
             <label for="title">title:</label>
-            <input type="text" id="title">
+            <input type="text" id="title" name="title">
           </div>
           <div>
             <label for="dead_line">dead_line:</label>
-            <input type="date-local" id="dead_line">
+            <input type="date-local" id="dead_line" name="dead_line">
           </div>
           <div>
             <label for="is_share">is_share:</label>
