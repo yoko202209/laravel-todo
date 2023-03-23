@@ -22,7 +22,7 @@
           </div>
           <div>
             <label for="dead_line">dead_line:</label>
-            <input type="date-local" id="dead_line" name="dead_line">
+            <input type="date" id="dead_line" name="dead_line">
           </div>
           <div>
             <label for="is_share">is_share:</label>
