@@ -14,7 +14,8 @@
         <div>
           カード作成
         </div>
-        <form action="POST">
+        <form action="{{route('goals.store')}}" method="POST" >
+          @csrf
           <div>
             <label for="title">title:</label>
             <input type="text" id="title">

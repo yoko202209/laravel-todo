@@ -15,6 +15,7 @@
           カード編集
         </div>
         <form action="POST">
+          @csrf
           <div>
             <label for="title">title:</label>
             <input type="text" id="title" value="{{$goal->title}}">
