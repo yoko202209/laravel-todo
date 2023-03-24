@@ -12,7 +12,7 @@
           <div class="card-body">
             <h5 class="card-title">{{$goal->title}} {{$goal->dead_line}}</h5>
             <p>{{$goal->is_share ? "public":"private"}}</p>
-            <p>{{$goal->is_done ? "done!":"yet"}} </p>
+            <h5>{{$goal->is_done ? "done!":"yet"}} </h5>
             <form action="{{route('goals.check',$goal)}}" method="POST">
               @csrf
                 <button class="btn btn-success">check!</button>
