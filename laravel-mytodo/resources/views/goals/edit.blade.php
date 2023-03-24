@@ -14,22 +14,24 @@
         <div>
           カード編集
         </div>
-        <form action="POST">
+        <form action="{{route('goals.update',$goal)}}" method="POST" >
           @csrf
+          @method('PUT')
           <div>
             <label for="title">title:</label>
-            <input type="text" id="title" value="{{$goal->title}}">
+            <input type="text" id="title" name="title" value="{{$goal->title}}">
           </div>
           <div>
             <label for="dead_line">dead_line:</label>
-            <input type="date-local" id="dead_line" value="{{$goal->dead_line}}">
+            <input type="date" id="dead_line" name="dead_line" value="{{$goal->dead_line}}">
           </div>
           <div>
             <label for="is_share">is_share:</label>
-            <input type="checkbox" name="is_share" value="1" id="is_share" {{$goal->is_share ? 'checked' : '' }}>
+            <input type="checkbox" name="is_share" value="1" id="is_share" {{$goal->is_share ? "checked" : ""}}>
           </div>
-          <button type="submit">変更</button>
+          <button type="submit">更新</button>
         </form>
+
       </article>
     </main>
   </body>
