@@ -19,12 +19,18 @@
             <!-- ここにカードを読み込む -->
             <hr>
             <div>
-              <p>title:{{$goal->title}}</p>
-              <p>dead_line:{{$goal->dead_line}}</p>
-              <p>is_done:{{$goal->is_done}}</p>
-              <p>is_share:{{$goal->is_share}}</p>
+              <p>{{$goal->title}} {{$goal->dead_line}} {{$goal->is_share ? "public":"private"}}</p>
+              <p>{{$goal->is_done ? "done!":""}}</p>
+              <a href="{{route('goals.show',$goal)}}">閲覧</a>
+              <a href="{{route('goals.edit',$goal)}}">編集</a>
+              <form action="{{route('goals.destroy',$goal)}}" method="POST">
+                @csrf
+                @method('delete')
+                <button>削除</button>
+              </form>
             </div>
           @endforeach
+          <a href="{{route('goals.create')}}">カードの作成</a>
         </div>
       </article>
     </main>
