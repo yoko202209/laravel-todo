@@ -109,4 +109,11 @@ class GoalController extends Controller
         $goal->delete();
         return redirect()->route('goals.index');
     }
+
+    public function check(Goal $goal)
+    {
+        $goal->is_done = abs($goal->is_done - 1);
+        $goal->save();
+        return redirect()->route('goals.index');
+    }
 }

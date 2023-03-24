@@ -1,38 +1,33 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODOカード一覧</title>
-  </head>
-  <body>
-    <header>
-      <a href="#">todo</a>
-    </header>
-    <main>
-      <article>
-        <div>
-          カード一覧
+@extends('layouts.app')
+
+@section('content')
+  <div class="container">
+    <div>
+      カード一覧
+    </div>
+    <div class="row">
+      @foreach($goals as $goal)
+        <!-- ここにカードを読み込む -->
+        <div class="card col-3 m-3">
+          <div class="card-body">
+            <h5 class="card-title">{{$goal->title}} {{$goal->dead_line}}</h5>
+            <p>{{$goal->is_share ? "public":"private"}}</p>
+            <p>{{$goal->is_done ? "done!":"yet"}} </p>
+            <form action="{{route('goals.check',$goal)}}" method="POST">
+              @csrf
+                <button class="btn btn-success">check!</button>
+            </form>
+            <form action="{{route('goals.destroy',$goal)}}" method="POST">
+              @csrf
+              @method('delete')
+              <a class="btn btn-primary" href="{{route('goals.show',$goal)}}">show</a>
+              <a class="btn btn-primary" href="{{route('goals.edit',$goal)}}">edit</a>
+              <button class="btn btn-danger">delete</button>
+            </form>
+          </div>
         </div>
-        <div>
-          @foreach($goals as $goal)
-            <!-- ここにカードを読み込む -->
-            <hr>
-            <div>
-              <p>{{$goal->title}} {{$goal->dead_line}} {{$goal->is_share ? "public":"private"}}</p>
-              <p>{{$goal->is_done ? "done!":""}}</p>
-              <a href="{{route('goals.show',$goal)}}">閲覧</a>
-              <a href="{{route('goals.edit',$goal)}}">編集</a>
-              <form action="{{route('goals.destroy',$goal)}}" method="POST">
-                @csrf
-                @method('delete')
-                <button>削除</button>
-              </form>
-            </div>
-          @endforeach
-          <a href="{{route('goals.create')}}">カードの作成</a>
-        </div>
-      </article>
-    </main>
-  </body>
-</html>
+      @endforeach
+      <a href="{{route('goals.create')}}">カードの作成</a>
+    </div>
+  </div>
+@endsection
