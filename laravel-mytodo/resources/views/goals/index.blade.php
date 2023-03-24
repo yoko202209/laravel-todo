@@ -19,7 +19,7 @@
             <!-- ここにカードを読み込む -->
             <hr>
             <div>
-              <p>title{{$goal->title}}</p>
+              <p>title:{{$goal->title}}</p>
               <p>dead_line:{{$goal->dead_line}}</p>
               <p>is_done:{{$goal->is_done}}</p>
               <p>is_share:{{$goal->is_share}}</p>
