@@ -8,10 +8,9 @@
           <div class="card-body">
               <h5 class="card-title">チーム詳細</h5>
               <div>
-                <p>title{{$todo->title}}</p>
-                <p>dead_line:{{$todo->dead_line}}</p>
-                <p>is_done:{{$todo->is_done}}</p>
-                <p>is_share:{{$todo->is_share}}</p>
+                <p>name{{$team->name}}</p>
+                <p>descriotion:{{$team->description}}</p>
+                <p>manager:{{$team->manager_user_id}}</p>
               </div>
           </div>
       </div>
