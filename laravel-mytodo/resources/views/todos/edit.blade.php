@@ -9,19 +9,19 @@
           <form action="{{route('todos.update',$todo)}}" method="POST" >
             @csrf
             @method('PUT')
-            <div>
-              <label for="title">title:</label>
-              <input type="text" id="title" name="title" value="{{$todo->title}}">
+            <div class="mb-3">
+              <label class="form-label" for="title">title</label>
+              <input class="form-control" type="text" id="title" name="title">
             </div>
-            <div>
-              <label for="dead_line">dead_line:</label>
-              <input type="date" id="dead_line" name="dead_line" value="{{$todo->dead_line}}">
+            <div  class="mb-3">
+              <label class="form-label" for="dead_line">dead_line</label>
+              <input class="form-control" type="date" id="dead_line" name="dead_line">
             </div>
-            <div>
-              <label for="is_share">is_share:</label>
-              <input type="checkbox" name="is_share" value="1" id="is_share" {{$todo->is_share ? "checked" : ""}}>
+            <div class="mb-3">
+              <input class="form-check-input" type="checkbox" name="is_share" value="1" id="is_share">
+              <label class="form-check-label" for="is_share">is_share</label>
             </div>
-            <button type="submit">更新</button>
+            <button class="btn btn-success" type="submit">更新</button>
           </form>
         </div>
       </div>
