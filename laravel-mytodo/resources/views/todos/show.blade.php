@@ -16,10 +16,10 @@
         </div>
         <div>
             <div>
-              <p>title{{$goal->title}}</p>
-              <p>dead_line:{{$goal->dead_line}}</p>
-              <p>is_done:{{$goal->is_done}}</p>
-              <p>is_share:{{$goal->is_share}}</p>
+              <p>title{{$todo->title}}</p>
+              <p>dead_line:{{$todo->dead_line}}</p>
+              <p>is_done:{{$todo->is_done}}</p>
+              <p>is_share:{{$todo->is_share}}</p>
             </div>
         </div>
       </article>

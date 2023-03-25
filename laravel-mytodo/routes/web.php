@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GoalController;
+use App\Http\Controllers\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +22,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('goals', GoalController::class);
-Route::post('goals/{goal}',[GoalController::class,'check'])->name('goals.check');
+Route::resource('todos', TodoController::class);
+Route::post('todos/{todo}',[TodoController::class,'check'])->name('todos.check');

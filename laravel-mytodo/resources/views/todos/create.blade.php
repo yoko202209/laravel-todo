@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODOカード編集</title>
+    <title>TODOカード作成</title>
   </head>
   <body>
     <header>
@@ -12,26 +12,24 @@
     <main>
       <article>
         <div>
-          カード編集
+          カード作成
         </div>
-        <form action="{{route('goals.update',$goal)}}" method="POST" >
+        <form action="{{route('todos.store')}}" method="POST" >
           @csrf
-          @method('PUT')
           <div>
             <label for="title">title:</label>
-            <input type="text" id="title" name="title" value="{{$goal->title}}">
+            <input type="text" id="title" name="title">
           </div>
           <div>
             <label for="dead_line">dead_line:</label>
-            <input type="date" id="dead_line" name="dead_line" value="{{$goal->dead_line}}">
+            <input type="date" id="dead_line" name="dead_line">
           </div>
           <div>
             <label for="is_share">is_share:</label>
-            <input type="checkbox" name="is_share" value="1" id="is_share" {{$goal->is_share ? "checked" : ""}}>
+            <input type="checkbox" name="is_share" value="1" id="is_share">
           </div>
-          <button type="submit">更新</button>
+          <button type="submit">作成</button>
         </form>
-
       </article>
     </main>
   </body>

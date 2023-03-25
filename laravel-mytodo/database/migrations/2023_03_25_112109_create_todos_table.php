@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('goals', function (Blueprint $table) {
+        Schema::create('todos', function (Blueprint $table) {
             $table->id();
+            
             $table->string('title');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->date('dead_line')->nullable();
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('goals');
+        Schema::dropIfExists('todos');
     }
 };
