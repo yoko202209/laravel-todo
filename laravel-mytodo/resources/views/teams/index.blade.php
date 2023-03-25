@@ -13,13 +13,7 @@
             <div class="card-body">
               <h5 class="card-title">{{$team->name}} </h5>
               <p>{{$team->description}}</p>
-              <form action="{{route('teams.destroy',$team)}}" method="POST">
-                @csrf
-                @method('delete')
-                <a class="btn btn-primary" href="{{route('teams.show',$team)}}">show</a>
-                <a class="btn btn-primary" href="{{route('teams.edit',$team)}}">edit</a>
-                <button class="btn btn-danger">delete</button>
-              </form>
+              <a class="btn btn-primary" href="{{route('teams.show',$team)}}">show</a>
             </div>
           </div>
         </div>
