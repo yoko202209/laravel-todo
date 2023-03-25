@@ -7,7 +7,6 @@
     </div>
     <div class="row">
       @foreach($teams as $team)
-        <!-- ここにカードを読み込む -->
         <div class="col-12 col-lg-4">
           <div class="card p-1 m-1">
             <div class="card-body">
