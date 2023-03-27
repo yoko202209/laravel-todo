@@ -27,6 +27,7 @@
         <div class="card-body">
           <h5 class="card-title">メンバーの管理</h5>
           <form action="{{route('member.store',$team)}}" method="POST">
+            @csrf
             <input class="form-control" type="text" id="member_id" name="member_id">
             <button class="btn btn-success" type="submit">メンバーの追加</button>
           </form>

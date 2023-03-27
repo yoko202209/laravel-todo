@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\TeamController;
-
+use App\Http\Controllers\MemberController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,4 +28,4 @@ Route::post('todos/{todo}',[TodoController::class,'check'])->name('todos.check')
 
 Route::resource('teams', TeamController::class);
 
-Route::post('teams/{team}',[MemberController::class,'store'])->name('members.store');
+Route::post('teams/{team}',[MemberController::class,'store'])->name('member.store');
