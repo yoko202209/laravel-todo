@@ -3,6 +3,7 @@
 @section('content')
   <div class="container">
     <div class="row">
+
       <div class="card col m-3">
         <div class="card-body">
           <h5 class="card-title">チーム編集</h5>
@@ -21,6 +22,17 @@
           </form>
         </div>
       </div>
+
+      <div class="card col m-3">
+        <div class="card-body">
+          <h5 class="card-title">メンバーの管理</h5>
+          <form action="{{route('member.post',$team)}}" method="POST">
+            <input class="form-control" type="text" id="member_id" name="member_id">
+            <button class="btn btn-success" type="submit">メンバーの追加</button>
+          </form>
+        </div>
+      </div>
+
     </div>
   </div>
 @endsection
