@@ -27,3 +27,5 @@ Route::resource('todos', TodoController::class);
 Route::post('todos/{todo}',[TodoController::class,'check'])->name('todos.check');
 
 Route::resource('teams', TeamController::class);
+
+Route::post('teams/{team}',[MemberController::class,'store'])->name('members.store');
