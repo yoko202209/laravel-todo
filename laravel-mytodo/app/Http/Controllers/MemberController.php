@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Member;
+use App\Models\Team;
 
 class MemberController extends Controller
 {
@@ -33,15 +34,15 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Team $team)
     {
         //
         $member = new member();
         $member->user_id = $request->input('user_id');
-        $member->team_id = $request->input('team_id');
+        $member->team_id = $team->id;
         $member->save();
 
-        return redirect()->route('teams.edit',compact($member->team_id));
+        return redirect()->route('teams.edit',['team' => $team]);
     }
 
     /**

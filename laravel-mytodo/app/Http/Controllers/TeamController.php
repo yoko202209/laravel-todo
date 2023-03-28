@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Team;
+use App\Models\Member;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,7 +58,11 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        return view('teams.show',compact('team'));
+        $members = Member::where('team_id',$team->id)
+            ->join('users','users.id','=','members.user_id')
+            ->select('users.name')
+            ->get();
+        return view('teams.show',['team' => $team,'members' => $members]);
     }
 
     /**
@@ -67,7 +73,11 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        return view('teams.edit',compact('team'));
+        $members = Member::where('team_id',$team->id)
+            ->join('users','users.id','=','members.user_id')
+            ->select('users.name')
+            ->get();
+        return view('teams.edit',['team' => $team,'members' => $members]);
     }
 
     /**
@@ -98,4 +108,6 @@ class TeamController extends Controller
         $team->delete();
         return redirect()->route('teams.index');
     }
+
+    
 }

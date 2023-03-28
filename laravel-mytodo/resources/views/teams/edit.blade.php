@@ -26,9 +26,17 @@
       <div class="card col m-3">
         <div class="card-body">
           <h5 class="card-title">メンバーの管理</h5>
+          <p>現在のメンバー</p>
+          <!--ここにメンバーを表示-->
+          <ul>
+            @foreach ($members as $member)
+              <li>{{ $member->name }}</li>
+            @endforeach
+          </ul>
           <form action="{{route('member.store',$team)}}" method="POST">
             @csrf
-            <input class="form-control" type="text" id="member_id" name="member_id">
+            <label class="form-label" for="user_id">user_id</label>
+            <input class="form-control" type="text" id="user_id" name="user_id">
             <button class="btn btn-success" type="submit">メンバーの追加</button>
           </form>
         </div>

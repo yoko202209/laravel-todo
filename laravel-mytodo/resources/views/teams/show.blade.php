@@ -10,18 +10,28 @@
           <div class="card-body">
               <h5 class="card-title">{{$team->name}} </h5>
               <p>{{$team->description}}</p>
-              <a class="btn btn-primary" href="{{route('teams.edit',$team)}}">edit</a>
+              <p>manager_id:{{$team->manager_user_id}}</p>
 
               <!--ここにメンバーを表示する-->
-
-              <form action="{{route('teams.destroy',$team)}}" method="POST">
-                @csrf
-                @method('delete')
-                <button class="btn btn-danger">delete</button>
-              </form>
+              <p>現在のメンバー</p>
+              <ul>
+                @foreach ($members as $member)
+                  <li>{{ $member->name }}</li>
+                @endforeach
+              </ul>
+              <a class="btn btn-primary" href="{{route('teams.edit',$team)}}">edit</a>
+              
           </div>
         </div>
       </div>
+    </div>
+    <div>
+      <form action="{{route('teams.destroy',$team)}}" method="POST">
+        @csrf
+        @method('delete')
+        <p><b>DANGER</b> チームの削除</p>
+        <button class="btn btn-danger">delete</button>
+      </form>
     </div>
   </div>
 @endsection
