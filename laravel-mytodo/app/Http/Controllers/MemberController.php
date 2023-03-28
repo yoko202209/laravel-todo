@@ -36,13 +36,19 @@ class MemberController extends Controller
      */
     public function store(Request $request,Team $team)
     {
-        //
-        $member = new member();
-        $member->user_id = $request->input('user_id');
+        $member = Member::where('user_id', $request->input('user_id'))
+                ->where('team_id', $team->id)
+                ->first();
+        if ($member) {
+            return back()->with('error', 'このメンバーはすでに登録されています');
+        }
+
+        $member = new Member();
+        $member->fill($request->all());
         $member->team_id = $team->id;
         $member->save();
 
-        return redirect()->route('teams.edit',['team' => $team]);
+        return redirect()->route('teams.edit', ['team' => $team])->with('success', 'メンバーを追加しました');
     }
 
     /**

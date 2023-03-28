@@ -9,6 +9,10 @@ class Member extends Model
 {
     use HasFactory;
     
+    protected $fillable = ['user_id', 'team_id'];
+    public $timestamps = false;
+    public $incrementing = false;
+
     public function user(){
         return $this->belongsTo(User::class);
     }

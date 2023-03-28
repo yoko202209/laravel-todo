@@ -3,7 +3,12 @@
 @section('content')
   <div class="container">
     <div class="row">
-
+      @if (session('success'))
+          <div class="alert alert-success">{{session('success')}}</div>
+      @endif
+      @if (session('error'))
+          <div class="alert alert-danger">{{session('error')}}</div>
+      @endif
       <div class="card col m-3">
         <div class="card-body">
           <h5 class="card-title">チーム編集</h5>
@@ -35,8 +40,10 @@
           </ul>
           <form action="{{route('member.store',$team)}}" method="POST">
             @csrf
-            <label class="form-label" for="user_id">user_id</label>
-            <input class="form-control" type="text" id="user_id" name="user_id">
+            <div class="mb-3">
+              <label class="form-label" for="user_id">user_id</label>
+              <input class="form-control" type="text" id="user_id" name="user_id">
+            </div>
             <button class="btn btn-success" type="submit">メンバーの追加</button>
           </form>
         </div>
