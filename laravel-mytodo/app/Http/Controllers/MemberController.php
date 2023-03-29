@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Policies\TeamPolicy;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Team;
@@ -37,8 +38,8 @@ class MemberController extends Controller
     public function store(Request $request,Team $team)
     {
         $member = Member::where('user_id', $request->input('user_id'))
-                ->where('team_id', $team->id)
-                ->first();
+            ->where('team_id', $team->id)
+            ->first();
         if ($member) {
             return back()->with('error', 'このメンバーはすでに登録されています');
         }

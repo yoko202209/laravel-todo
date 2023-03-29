@@ -28,6 +28,7 @@
         </div>
       </div>
 
+      
       <div class="card col m-3">
         <div class="card-body">
           <h5 class="card-title">メンバーの管理</h5>
@@ -38,6 +39,7 @@
               <li>{{ $member->name }}</li>
             @endforeach
           </ul>
+          @if(Auth::id() == $team->manager_user_id)
           <form action="{{route('member.store',$team)}}" method="POST">
             @csrf
             <div class="mb-3">
@@ -46,6 +48,7 @@
             </div>
             <button class="btn btn-success" type="submit">メンバーの追加</button>
           </form>
+          @endif
         </div>
       </div>
 
