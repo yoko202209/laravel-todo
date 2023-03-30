@@ -47,6 +47,12 @@ class TeamController extends Controller
         $team->manager_user_id = Auth::id();
         $team->save();
 
+        //自分をmemberとして追加
+        $member = new Member();
+        $member->user_id = Auth::id();
+        $member->team_id = $team->id;
+        $member->save();
+
         return redirect()->route('teams.index');
     }
 
@@ -109,5 +115,9 @@ class TeamController extends Controller
         return redirect()->route('teams.index');
     }
 
+    public function add_user(Team $team, User $user)
+    {
+        $team->users()->attach($user);
+    }
     
 }

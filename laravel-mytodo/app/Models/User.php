@@ -45,4 +45,9 @@ class User extends Authenticatable
     public function todos(){
         return $this->hasMany(Todo::class);
     }
+
+    public function team(){
+        return $this->belongsTo(Team::class);
+    }
+    
 }

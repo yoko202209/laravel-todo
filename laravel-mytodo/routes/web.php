@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\MemberController;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Middleware\TeamMember;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +29,23 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('todos', TodoController::class);
 Route::post('todos/{todo}',[TodoController::class,'check'])->name('todos.check');
 
-Route::resource('teams', TeamController::class);
+//Route::resource('teams', TeamController::class);
+
+Route::middleware(['auth', TeamMember::class])->group(function () {
+    Route::resource('teams', TeamController::class)->names([
+        'create' => 'teams.create',
+        'store' => 'teams.store',
+        //'show' => 'teams.show',
+        'edit' => 'teams.edit',
+        'update' => 'teams.update',
+        'destroy' => 'teams.destroy'
+    ]);
+});
+Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
+Route::get('/teams/create', [TeamController::class, 'create'])->name('teams.create');
+Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
+
+Route::get('teams/{team}',[TeamController::class,'show'])->name('teams.show');
 
 Route::post('teams/{team}',[MemberController::class,'store'])->name('member.store');
+
