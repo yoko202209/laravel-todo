@@ -47,11 +47,8 @@ class TeamController extends Controller
         $team->manager_user_id = Auth::id();
         $team->save();
 
-        //自分をmemberとして追加
-        $member = new Member();
-        $member->user_id = Auth::id();
-        $member->team_id = $team->id;
-        $member->save();
+        //自分を追加する
+        $team->users()->attach(Auth::user());
 
         return redirect()->route('teams.index');
     }
@@ -64,10 +61,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        $members = Member::where('team_id',$team->id)
-            ->join('users','users.id','=','members.user_id')
-            ->select('users.name')
-            ->get();
+        $members = $team->users;
         return view('teams.show',['team' => $team,'members' => $members]);
     }
 
@@ -79,10 +73,7 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        $members = Member::where('team_id',$team->id)
-            ->join('users','users.id','=','members.user_id')
-            ->select('users.name')
-            ->get();
+        $members = $team->users;
         return view('teams.edit',['team' => $team,'members' => $members]);
     }
 

@@ -43,9 +43,8 @@ Route::middleware(['auth', TeamMember::class])->group(function () {
 });
 Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
 Route::get('/teams/create', [TeamController::class, 'create'])->name('teams.create');
+Route::get('teams/{team}',[TeamController::class,'show'])->name('teams.show');
 Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
 
-Route::get('teams/{team}',[TeamController::class,'show'])->name('teams.show');
-
-Route::post('teams/{team}',[MemberController::class,'store'])->name('member.store');
+Route::post('teams/{team}',[MemberController::class,'add_user'])->name('teams.add_user');
 
