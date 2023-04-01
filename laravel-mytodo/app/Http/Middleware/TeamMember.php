@@ -17,9 +17,8 @@ class TeamMember
      */
     public function handle(Request $request, Closure $next, ...$teams)
     {
+        //TODO:動かないので調査修正が必要
         $user = $request->user();
-
-        dd($user->teams);
         foreach ($teams as $teamSlug) {
             $team = Team::where('id', $teamSlug)->first();
 
