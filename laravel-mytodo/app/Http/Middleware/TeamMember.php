@@ -15,9 +15,10 @@ class TeamMember
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, ...$teams)
+    public function handle(Request $request, Closure $next)
     {
-        //TODO:動かないので調査修正が必要
+        $teams = auth()->user()->teams;//TODO:なぜか取得できないので改善必須。
+        dd($request,$next,$teams);
         $user = $request->user();
         foreach ($teams as $teamSlug) {
             $team = Team::where('id', $teamSlug)->first();

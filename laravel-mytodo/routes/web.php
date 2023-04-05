@@ -33,9 +33,6 @@ Route::post('todos/{todo}',[TodoController::class,'check'])->name('todos.check')
 
 Route::middleware(['auth', TeamMember::class])->group(function () {
     Route::resource('teams', TeamController::class)->names([
-        'create' => 'teams.create',
-        'store' => 'teams.store',
-        //'show' => 'teams.show',
         'edit' => 'teams.edit',
         'update' => 'teams.update',
         'destroy' => 'teams.destroy'
