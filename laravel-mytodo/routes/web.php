@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\TeamController;
-use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Auth;
 
-use App\Http\Middleware\TeamMember;
+use App\Http\Middleware\TeamUser;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,7 +30,7 @@ Route::post('todos/{todo}',[TodoController::class,'check'])->name('todos.check')
 
 //Route::resource('teams', TeamController::class);
 
-Route::middleware(['auth', TeamMember::class])->group(function () {
+Route::middleware(['auth', TeamUser::class])->group(function () {
     Route::resource('teams', TeamController::class)->names([
         'edit' => 'teams.edit',
         'update' => 'teams.update',
@@ -43,5 +42,5 @@ Route::get('/teams/create', [TeamController::class, 'create'])->name('teams.crea
 Route::get('teams/{team}',[TeamController::class,'show'])->name('teams.show');
 Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
 
-Route::post('teams/{team}',[MemberController::class,'add_user'])->name('teams.add_user');
+Route::post('teams/{team}',[TeamController::class,'add_user'])->name('teams.add_user');
 

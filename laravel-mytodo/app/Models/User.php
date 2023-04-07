@@ -45,9 +45,11 @@ class User extends Authenticatable
     public function todos(){
         return $this->hasMany(Todo::class);
     }
-
-    public function team(){
-        return $this->belongsTo(Team::class);
+    
+    public function teams()
+    {
+        //return $this->belongsToMany(Team::class);//なぜか動かない
+        return $this->belongsToMany('App\Models\Team','team_user','user_id','team_id');
     }
     
 }

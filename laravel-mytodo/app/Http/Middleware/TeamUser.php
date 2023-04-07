@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use App\Models\Team;
 
-class TeamMember
+class TeamUser
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,10 @@ class TeamMember
      */
     public function handle(Request $request, Closure $next)
     {
-        $teams = auth()->user()->teams;//TODO:なぜか取得できないので改善必須。
-        dd($request,$next,$teams);
         $user = $request->user();
-        foreach ($teams as $teamSlug) {
-            $team = Team::where('id', $teamSlug)->first();
-
+        $teams = $user->teams;//TODO:なぜか取得できないので直す
+        //dd($request,$next,$teams,$user);
+        foreach ($teams as $team) {
             if ($team && $user->teams->contains($team)) {
                 return $next($request);
             }
