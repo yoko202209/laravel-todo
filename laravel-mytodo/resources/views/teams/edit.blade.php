@@ -40,7 +40,7 @@
             @endforeach
           </ul>
           @if(Auth::id() == $team->manager_user_id)
-          <form action="{{route('member.store',$team)}}" method="POST">
+          <form action="{{route('teams.add_user',$team)}}" method="POST">
             @csrf
             <div class="mb-3">
               <label class="form-label" for="user_id">user_id</label>

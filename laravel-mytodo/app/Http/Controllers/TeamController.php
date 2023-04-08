@@ -106,9 +106,14 @@ class TeamController extends Controller
         return redirect()->route('teams.index');
     }
 
-    public function add_user(Team $team, User $user)
+    public function add_user(Request $request,Team $team)
     {
-        $team->users()->attach($user);
+
+        $team->users()->attach($request->input('user_id'));
+
+        
+        $members = $team->users;
+        return view('teams.edit',['team' => $team,'members' => $members]);
     }
     
 }
