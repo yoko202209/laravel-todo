@@ -18,9 +18,9 @@ return new class extends Migration
             
             $table->string('title');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('team_id')->constrained()->cascadeOnDelete();
             $table->date('dead_line')->nullable();
             $table->boolean('is_done')->default(false);
-            $table->boolean('is_share')->default(false);
 
             $table->timestamps();
         });
