@@ -17,7 +17,6 @@ class TodoController extends Controller
     public function index(Team $team)
     {
         //
-        dd($team);
         return view('todos.index',compact('team'));
     }
 
@@ -51,10 +50,9 @@ class TodoController extends Controller
         $todo->team_id = $team->id;
         $todo->dead_line = $request->input('dead_line');
 
-        dd($todo);
         $todo->save();
 
-        return redirect()->route('todos.index');
+        return redirect()->route('todos.index',$team);
     }
 
     /**

@@ -7,7 +7,6 @@
         <h1>TODOアプリトップページ（仮）</h1>
     </div>
     <div>
-        <a class="btn btn-primary" href="{{ route('todos.index') }}">TODO一覧</a>
         <a class="btn btn-primary" href="{{ route('teams.index') }}">チーム一覧</a>
     </div>
 </div>

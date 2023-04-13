@@ -6,7 +6,7 @@
       {{$team->name}} カード一覧
     </div>
     <div class="row">
-      @foreach($todos as $todo)
+      @foreach($team->todos as $todo)
         <!-- ここにカードを読み込む -->
         <div class="col-12 col-lg-4">
           <div class="card p-1 m-1">

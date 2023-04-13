@@ -6,7 +6,7 @@
       <div class="card col m-3">
         <div class="card-body">
           <h5 class="card-title">カード作成</h5>
-          <form action="{{route('todos.store')}}" method="POST" >
+          <form action="{{route('todos.store',$team)}}" method="POST" >
             @csrf
             
             <div class="mb-3">

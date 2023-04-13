@@ -17,7 +17,6 @@
               </li>
             @endforeach
             <a class="btn btn-primary" href="{{route('todos.index',$team)}}">todo一覧へ移動</a>
-            {{dd($team)}}
           </ul>
         </div>
       </div>
