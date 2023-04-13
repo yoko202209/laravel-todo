@@ -52,6 +52,19 @@
         </div>
       </div>
 
+      
+    </div>
+    <div class="row">
+      <div class="card col m-3">
+        <div class="card-body">
+          <form action="{{route('teams.destroy',$team)}}" method="POST">
+            @csrf
+            @method('delete')
+            <p><b>DANGER</b> チームの削除</p>
+            <button class="btn btn-danger">delete</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 @endsection

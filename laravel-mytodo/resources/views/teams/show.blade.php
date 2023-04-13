@@ -25,13 +25,5 @@
         </div>
       </div>
     </div>
-    <div>
-      <form action="{{route('teams.destroy',$team)}}" method="POST">
-        @csrf
-        @method('delete')
-        <p><b>DANGER</b> チームの削除</p>
-        <button class="btn btn-danger">delete</button>
-      </form>
-    </div>
   </div>
 @endsection
