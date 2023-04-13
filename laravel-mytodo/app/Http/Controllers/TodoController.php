@@ -96,7 +96,7 @@ class TodoController extends Controller
         $todo->dead_line = $request->input('dead_line');
         $todo->save();
 
-        return redirect()->route('todos.index');
+        return redirect()->route('todos.index',$team);
     }
 
     /**
@@ -105,16 +105,16 @@ class TodoController extends Controller
      * @param  \App\Models\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(todo $todo)
+    public function destroy(Team $team,todo $todo)
     {
         $todo->delete();
-        return redirect()->route('todos.index');
+        return redirect()->route('todos.index',$team);
     }
 
-    public function check(todo $todo)
+    public function check(Team $team,todo $todo)
     {
         $todo->is_done = abs($todo->is_done - 1);
         $todo->save();
-        return redirect()->route('todos.index');
+        return redirect()->route('todos.index',$team);
     }
 }
