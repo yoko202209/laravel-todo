@@ -16,10 +16,6 @@
               <label class="form-label" for="dead_line">dead_line</label>
               <input class="form-control" type="date" id="dead_line" name="dead_line">
             </div>
-            <div class="mb-3">
-              <input class="form-check-input" type="checkbox" name="is_share" value="1" id="is_share">
-              <label class="form-check-label" for="is_share">is_share</label>
-            </div>
             <button class="btn btn-success" type="submit">作成</button>
           </form>
         </div>

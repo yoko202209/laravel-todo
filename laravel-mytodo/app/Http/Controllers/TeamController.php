@@ -62,7 +62,8 @@ class TeamController extends Controller
     public function show(Team $team)
     {
         $members = $team->users;
-        return view('teams.show',['team' => $team,'members' => $members]);
+        $todos = $team->todos;
+        return view('teams.show',['team' => $team,'members' => $members, 'todos' => $todos]);
     }
 
     /**

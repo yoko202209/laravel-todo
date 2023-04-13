@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,10 +14,10 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Team $team)
     {
         //
-        $todos = Auth::user()->todos;
+        $todos = $team->todos;
         return view('todos.index',compact('todos'));
     }
 
@@ -36,7 +37,7 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Team $team)
     {
         $request->validate([
             'title' => 'required',
@@ -47,8 +48,8 @@ class TodoController extends Controller
         $todo = new todo();
         $todo->title = $request->input('title');
         $todo->user_id = Auth::id();
+        $todo->team_id = $team->id;
         $todo->dead_line = $request->input('dead_line');
-        $todo->is_share = $request->input('is_share') ? true:false;
         $todo->save();
 
         return redirect()->route('todos.index');
@@ -83,7 +84,7 @@ class TodoController extends Controller
      * @param  \App\Models\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, todo $todo)
+    public function update(Request $request, todo $todo, Team $team)
     {
         $request->validate([
             'title' => 'required',
@@ -91,8 +92,8 @@ class TodoController extends Controller
         
         $todo->title = $request->input('title');
         $todo->user_id = Auth::id();
+        $todo->team_id = $team->id;
         $todo->dead_line = $request->input('dead_line');
-        $todo->is_share = $request->input('is_share') ? true:false;
         $todo->save();
 
         return redirect()->route('todos.index');

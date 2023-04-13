@@ -3,10 +3,44 @@
 @section('content')
   <div class="container">
     
-    <p>チーム詳細</p>
+    <p>{{$team->name}} </p>
+    <div class="col m-3">
+      <div class="card">
+        <div class="card-header">
+          チーム内TODOリスト
+        </div>
+        <div class="card-body">
+          <ul>
+            @foreach ($todos as $todo)
+              <li>{{ $todo->title }}
+              <!--もし自分のtodoの場合はボタンで更新できるように-->
+              </li>
+            @endforeach
+            <a class="btn btn-primary">todoの作成</a>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="row">
+      
+      <!--
       <div class="col m-3">
         <div class="card">
+          <div class="card-header">
+            チャットルーム
+          </div>
+          <div class="card-body">
+            ここにチャット機能
+          </div>
+        </div>
+      </div>
+      -->
+      
+      <div class="col m-3">
+        <div class="card">
+          <div class="card-header">
+            チーム詳細
+          </div>
           <div class="card-body">
               <h5 class="card-title">{{$team->name}} </h5>
               <p>{{$team->description}}</p>
@@ -21,28 +55,6 @@
               </ul>
               <a class="btn btn-primary" href="{{route('teams.edit',$team)}}">edit</a>
               
-          </div>
-        </div>
-      </div>
-      
-      <div class="col m-3">
-        <div class="card">
-          <div class="card-header">
-            チーム内TODOリスト
-          </div>
-          <div class="card-body">
-            ここにTODOリスト（メンバーごとに表示する）
-          </div>
-        </div>
-      </div>
-
-      <div class="col m-3">
-        <div class="card">
-          <div class="card-header">
-            チャットルーム
-          </div>
-          <div class="card-body">
-            ここにチャット機能
           </div>
         </div>
       </div>
