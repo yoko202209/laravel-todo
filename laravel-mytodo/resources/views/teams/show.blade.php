@@ -16,7 +16,8 @@
               <!--もし自分のtodoの場合はボタンで更新できるように-->
               </li>
             @endforeach
-            <a class="btn btn-primary">todoの作成</a>
+            <a class="btn btn-primary" href="{{route('todos.index',$team)}}">todo一覧へ移動</a>
+            {{dd($team)}}
           </ul>
         </div>
       </div>

@@ -17,8 +17,8 @@ class TodoController extends Controller
     public function index(Team $team)
     {
         //
-        $todos = $team->todos;
-        return view('todos.index',compact('todos'));
+        dd($team);
+        return view('todos.index',compact('team'));
     }
 
     /**
@@ -26,9 +26,9 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Team $team)
     {
-        return view('todos.create');
+        return view('todos.create',compact('team'));
     }
 
     /**
@@ -50,6 +50,8 @@ class TodoController extends Controller
         $todo->user_id = Auth::id();
         $todo->team_id = $team->id;
         $todo->dead_line = $request->input('dead_line');
+
+        dd($todo);
         $todo->save();
 
         return redirect()->route('todos.index');

@@ -8,6 +8,10 @@
           <h5 class="card-title">カード作成</h5>
           <form action="{{route('todos.store')}}" method="POST" >
             @csrf
+            
+            <div class="mb-3">
+            teamID : {{$team->id}}
+            </div>
             <div class="mb-3">
               <label class="form-label" for="title">title</label>
               <input class="form-control" type="text" id="title" name="title">

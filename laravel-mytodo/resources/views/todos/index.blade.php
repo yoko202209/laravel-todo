@@ -3,7 +3,7 @@
 @section('content')
   <div class="container">
     <div>
-      カード一覧
+      {{$team->name}} カード一覧
     </div>
     <div class="row">
       @foreach($todos as $todo)
@@ -30,7 +30,7 @@
           </div>
         </div>
       @endforeach
-      <a href="{{route('todos.create')}}">カードの作成</a>
+      <a href="{{route('todos.create',$team)}}">カードの作成</a>
     </div>
   </div>
 @endsection

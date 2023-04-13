@@ -24,9 +24,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+/*
 Route::resource('todos', TodoController::class);
 Route::post('todos/{todo}',[TodoController::class,'check'])->name('todos.check');
+*/
 
 //Route::resource('teams', TeamController::class);
 
@@ -37,10 +38,20 @@ Route::middleware(['auth', TeamUser::class])->group(function () {
         'destroy' => 'teams.destroy'
     ]);
 });
+
 Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
 Route::get('/teams/create', [TeamController::class, 'create'])->name('teams.create');
 Route::get('teams/{team}',[TeamController::class,'show'])->name('teams.show');
 Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
+
+Route::get('teams/{team}/todos', [TodoController::class, 'index'])->name('teams.todos.index');
+Route::get('teams/{team}/todos/create', [TodoController::class, 'create'])->name('teams.todos.create');
+Route::post('teams/{team}/todos', [TodoController::class, 'store'])->name('teams.todos.store');
+Route::get('teams/{team}/todos/{todo}', [TodoController::class, 'show'])->name('teams.todos.show');
+Route::get('teams/{team}/todos/{todo}/edit', [TodoController::class, 'edit'])->name('teams.todos.edit');
+Route::patch('teams/{team}/todos/{todo}', [TodoController::class, 'update'])->name('teams.todos.update');
+Route::delete('teams/{team}/todos/{todo}', [TodoController::class, 'destroy'])->name('teams.todos.destroy');
+
 
 Route::post('teams/{team}',[TeamController::class,'add_user'])->name('teams.add_user');
 
