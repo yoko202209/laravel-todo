@@ -44,13 +44,13 @@ Route::get('/teams/create', [TeamController::class, 'create'])->name('teams.crea
 Route::get('teams/{team}',[TeamController::class,'show'])->name('teams.show');
 Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
 
-Route::get('teams/{team}/todos', [TodoController::class, 'index'])->name('teams.todos.index');
-Route::get('teams/{team}/todos/create', [TodoController::class, 'create'])->name('teams.todos.create');
-Route::post('teams/{team}/todos', [TodoController::class, 'store'])->name('teams.todos.store');
-Route::get('teams/{team}/todos/{todo}', [TodoController::class, 'show'])->name('teams.todos.show');
-Route::get('teams/{team}/todos/{todo}/edit', [TodoController::class, 'edit'])->name('teams.todos.edit');
-Route::patch('teams/{team}/todos/{todo}', [TodoController::class, 'update'])->name('teams.todos.update');
-Route::delete('teams/{team}/todos/{todo}', [TodoController::class, 'destroy'])->name('teams.todos.destroy');
+Route::get('teams/{team}/todos', [TodoController::class, 'index'])->name('todos.index');
+Route::get('teams/{team}/todos/create', [TodoController::class, 'create'])->name('todos.create');
+Route::post('teams/{team}/todos', [TodoController::class, 'store'])->name('todos.store');
+Route::get('teams/{team}/todos/{todo}', [TodoController::class, 'show'])->name('todos.show');
+Route::get('teams/{team}/todos/{todo}/edit', [TodoController::class, 'edit'])->name('todos.edit');
+Route::patch('teams/{team}/todos/{todo}', [TodoController::class, 'update'])->name('todos.update');
+Route::delete('teams/{team}/todos/{todo}', [TodoController::class, 'destroy'])->name('todos.destroy');
 
 
 Route::post('teams/{team}',[TeamController::class,'add_user'])->name('teams.add_user');
