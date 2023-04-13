@@ -10,8 +10,11 @@ class Team extends Model
     use HasFactory;
     public function users()
     {
-        //return $this->belongsToMany(User::class);//なぜか動かない
         return $this->belongsToMany('App\Models\User','team_user','team_id','user_id');
         
+    }
+    public function teams()
+    {
+        return $this->belongsTo(Team::class);
     }
 }

@@ -24,6 +24,28 @@
           </div>
         </div>
       </div>
+      
+      <div class="col m-3">
+        <div class="card">
+          <div class="card-header">
+            チーム内TODOリスト
+          </div>
+          <div class="card-body">
+            ここにTODOリスト（メンバーごとに表示する）
+          </div>
+        </div>
+      </div>
+
+      <div class="col m-3">
+        <div class="card">
+          <div class="card-header">
+            チャットルーム
+          </div>
+          <div class="card-body">
+            ここにチャット機能
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 @endsection
