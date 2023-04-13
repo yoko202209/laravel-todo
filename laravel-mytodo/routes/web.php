@@ -49,7 +49,7 @@ Route::get('teams/{team}/todos/create', [TodoController::class, 'create'])->name
 Route::post('teams/{team}/todos', [TodoController::class, 'store'])->name('todos.store');
 Route::get('teams/{team}/todos/{todo}', [TodoController::class, 'show'])->name('todos.show');
 Route::get('teams/{team}/todos/{todo}/edit', [TodoController::class, 'edit'])->name('todos.edit');
-Route::patch('teams/{team}/todos/{todo}', [TodoController::class, 'update'])->name('todos.update');
+Route::put('teams/{team}/todos/{todo}', [TodoController::class, 'update'])->name('todos.update');
 Route::delete('teams/{team}/todos/{todo}', [TodoController::class, 'destroy'])->name('todos.destroy');
 
 Route::post('teams/{team}/todos/{todo}',[TodoController::class,'check'])->name('todos.check');

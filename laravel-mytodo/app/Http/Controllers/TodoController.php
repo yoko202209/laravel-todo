@@ -61,9 +61,9 @@ class TodoController extends Controller
      * @param  \App\Models\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function show(todo $todo)
+    public function show(Team $team,todo $todo)
     {
-        return view('todos.show',compact('todo'));
+        return view('todos.show',compact('team','todo'));
     }
 
     /**
@@ -72,9 +72,9 @@ class TodoController extends Controller
      * @param  \App\Models\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function edit(todo $todo)
+    public function edit(Team $team,todo $todo)
     {
-        return view('todos.edit',compact('todo'));
+        return view('todos.edit',compact('team','todo'));
     }
 
     /**
@@ -84,7 +84,7 @@ class TodoController extends Controller
      * @param  \App\Models\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, todo $todo, Team $team)
+    public function update(Request $request,  Team $team,todo $todo)
     {
         $request->validate([
             'title' => 'required',

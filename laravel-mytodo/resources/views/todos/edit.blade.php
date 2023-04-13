@@ -6,7 +6,7 @@
       <div class="card col m-3">
         <div class="card-body">
           <h5 class="card-title">カード編集</h5>
-          <form action="{{route('todos.update',$todo)}}" method="POST" >
+          <form action="{{route('todos.update',['team' => $team,'todo' => $todo])}}" method="POST" >
             @csrf
             @method('PUT')
             <div class="mb-3">
