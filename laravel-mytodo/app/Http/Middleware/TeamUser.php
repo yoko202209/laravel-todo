@@ -18,7 +18,7 @@ class TeamUser
     public function handle(Request $request, Closure $next)
     {
         $user = $request->user();
-        $teams = $user->teams;//TODO:なぜか取得できないので直す
+        $teams = $user->teams;
         //dd($request,$next,$teams,$user);
         foreach ($teams as $team) {
             if ($team && $user->teams->contains($team)) {
