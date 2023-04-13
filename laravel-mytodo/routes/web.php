@@ -52,6 +52,8 @@ Route::get('teams/{team}/todos/{todo}/edit', [TodoController::class, 'edit'])->n
 Route::patch('teams/{team}/todos/{todo}', [TodoController::class, 'update'])->name('todos.update');
 Route::delete('teams/{team}/todos/{todo}', [TodoController::class, 'destroy'])->name('todos.destroy');
 
+Route::post('teams/{team}/todos/{todo}',[TodoController::class,'check'])->name('todos.check');
+
 
 Route::post('teams/{team}',[TeamController::class,'add_user'])->name('teams.add_user');
 
