@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Middleware\TeamUser;
@@ -57,3 +58,4 @@ Route::post('teams/{team}/todos/{todo}',[TodoController::class,'check'])->name('
 
 Route::post('teams/{team}',[TeamController::class,'add_user'])->name('teams.add_user');
 
+Route::resource('tags', TagController::class);
