@@ -15,10 +15,22 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Team $team)
+    public function index(Team $team, Request $request)
     {
         //
-        return view('todos.index',compact('team'));
+
+        $keyword = $request->input('keyword');
+        if ($keyword == null){
+            $keyword = "";
+        }
+
+        $todos = Todo::where('team_id', '=',$team->id);
+        if(!empty($keyword)) {
+            $todos = $todos->where('title', 'LIKE', "%{$keyword}%");
+        }
+        $todos = $todos->get();
+
+        return view('todos.index',compact('team','todos','keyword'));
     }
 
     /**

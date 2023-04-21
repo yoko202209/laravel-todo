@@ -4,9 +4,14 @@
   <div class="container">
     <div>
       {{$team->name}} カード一覧
+      <form action="{{route('todos.index',['team' => $team])}}" method="GET">
+        @csrf
+        <input type="text" name="keyword" value="{{ $keyword }}">
+        <button class="btn btn-primary">検索</button>
+      </form>
     </div>
     <div class="row">
-      @foreach($team->todos as $todo)
+      @forelse($todos as $todo)
         <!-- ここにカードを読み込む -->
         <div class="col-12 col-lg-4">
           <div class="card p-1 m-1">
@@ -31,7 +36,11 @@
             </div>
           </div>
         </div>
-      @endforeach
+      @empty
+        <div>
+          表示するTODOカードはありません。
+        </div>
+      @endforelse
       <a href="{{route('todos.create',$team)}}">カードの作成</a>
     </div>
   </div>
