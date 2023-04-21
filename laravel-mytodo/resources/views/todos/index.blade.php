@@ -13,6 +13,9 @@
             <div class="card-body">
               <h5 class="card-title">{{$todo->title}} </h5>
               <p>{{$todo->dead_line}}</p>
+              @foreach($todo->tags as $tag)
+                {{$tag->name}}&nbsp;
+              @endforeach
               <h5>{{$todo->is_done ? "done!":"yet"}} </h5>
               <form action="{{route('todos.check',['team' => $team,'todo' => $todo])}}" method="POST">
                 @csrf

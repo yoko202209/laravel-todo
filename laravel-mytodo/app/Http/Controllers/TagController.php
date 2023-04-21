@@ -27,7 +27,6 @@ class TagController extends Controller
      */
     public function create(Team $team)
     {
-        //dd($team);//ここには入っている
         return view('tags.create', ['team' => $team]);
     }
 

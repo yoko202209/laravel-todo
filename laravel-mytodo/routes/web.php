@@ -52,8 +52,8 @@ Route::put('teams/{team}/todos/{todo}', [TodoController::class, 'update'])->name
 Route::delete('teams/{team}/todos/{todo}', [TodoController::class, 'destroy'])->name('todos.destroy');
 
 Route::post('teams/{team}/todos/{todo}',[TodoController::class,'check'])->name('todos.check');
-Route::put('teams/{team}/todos/{todo}/tags', [TodoController::class, 'add_tag'])->name('todos.add_tag');
-
+Route::put('teams/{team}/todos/{todo}/tags', [TodoController::class, 'attach_tag'])->name('todos.attach_tag');
+Route::delete('teams/{team}/todos/{todo}/tags/{tag}', [TodoController::class, 'detach_tag'])->name('todos.detach_tag');
 //tags
 Route::get('teams/{team}/tags', [TagController::class, 'index'])->name('tags.index');
 Route::get('teams/{team}/tags/create', [TagController::class, 'create'])->name('tags.create');

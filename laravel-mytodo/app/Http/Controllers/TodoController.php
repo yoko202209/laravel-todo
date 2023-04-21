@@ -75,8 +75,8 @@ class TodoController extends Controller
      */
     public function edit(Team $team,todo $todo)
     {
-        $tags = $team->tags();
-        return view('todos.edit',compact('team','todo','tags'));
+        $tags = $team->tags;
+        return view('todos.edit',['team' => $team, 'todo' => $todo, 'tags' => $tags]);
     }
 
     /**
@@ -120,14 +120,20 @@ class TodoController extends Controller
         return redirect()->route('todos.index',$team);
     }
 
-    public function add_tag(Request $request, Team $team,Todo $todo)
+    public function attach_tag(Request $request, Team $team,Todo $todo)
     {
         $todo->tags()->attach($request->input('tag_id'));
-        dd($team->tags());
-        return view('todos.edit',['team' => $team,'todo' => $todo]);
+
+        $tags = $team->tags;
+        return view('todos.edit',['team' => $team,'todo' => $todo,'tags' => $tags]);
     }
 
-        
+    public function detach_tag(Team $team,Todo $todo,Tag $tag)
+    {
+        $todo->tags()->detach($tag->id);
+        $tags = $team->tags;
+        return view('todos.edit',['team' => $team,'todo' => $todo,'tags' => $tags]);
+    }
     
     
 }

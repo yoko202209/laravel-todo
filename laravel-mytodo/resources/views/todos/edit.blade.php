@@ -21,9 +21,19 @@
           </form>
           <hr>
 
-          
+
           <!--ここからタグ編集フォーム-->
-          <form action="{{route('todos.add_tag',[ 'team' => $team ,'todo' => $todo])}}" method="POST" >
+          <h5>tags</h5>
+          @foreach($todo->tags as $tag)
+          {{$tag->id}}:{{$tag->name}}
+          <form action="{{ route('todos.detach_tag', ['team' => $team, 'todo' => $todo, 'tag' => $tag]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger" type="submit">削除</button>
+          </form>
+          @endforeach
+
+          <form action="{{route('todos.attach_tag',['team' => $team ,'todo' => $todo])}}" method="POST" >
             @csrf
             @method('PUT')
             <div class="mb-3">
