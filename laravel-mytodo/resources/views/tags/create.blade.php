@@ -6,7 +6,7 @@
       <div class="card col m-3">
         <div class="card-body">
           <h5 class="card-title">タグ作成</h5>
-          <form action="{{route('tags.store')}}" method="POST" >
+          <form action="{{route('tags.store',$team)}}" method="POST" >
             @csrf
             <div class="mb-3">
               <label class="form-label" for="name">name</label>

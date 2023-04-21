@@ -8,7 +8,6 @@
     </div>
     <div>
         <a class="btn btn-primary" href="{{ route('teams.index') }}">チーム一覧</a>
-        <a class="btn btn-primary" href="{{ route('tags.index') }}">タグ一覧</a>
     </div>
 </div>
 @endsection

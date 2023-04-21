@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Tag;
+use App\Models\Team;
 
 use Illuminate\Http\Request;
 
@@ -12,11 +13,11 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Team $team)
     {
         //
-        $tags = Tag::all();
-        return view('tags.index',compact('tags'));
+        $tags = $team->tags;
+        return view('tags.index',['team' => $team,'tags' => $tags]);
     }
 
     /**
@@ -24,10 +25,10 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Team $team)
     {
-        //
-        return view('tags.create');
+        //dd($team);//ここには入っている
+        return view('tags.create', ['team' => $team]);
     }
 
     /**
@@ -36,14 +37,17 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Team $team)
     {
         //
+
         $tag = new tag();
         $tag->name = $request->input('name');
+        $tag->team_id = $team->id;
         $tag->save();
 
-        return redirect()->route('tags.index');
+        $tags = $team->tags;
+        return redirect()->route('tags.index',['team' => $team,'tags' => $tags]);
     }
 
     /**
@@ -52,10 +56,10 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Tag $tag)
+    public function show(Team $team, Tag $tag)
     {
         //
-        return view('tags.show',compact('tag'));
+        return view('tags.show',['team' => $team,'tag' => $tag]);
     }
 
     /**
@@ -64,10 +68,10 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit(Team $team, Tag $tag)
     {
         //
-        return view('tags.edit',compact('tag'));
+        return view('tags.edit',['team' => $team,'tag' => $tag]);
     }
 
     /**
@@ -77,13 +81,14 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request, Team $team, Tag $tag)
     {
         
         $tag->name = $request->input('name');
         $tag->save();
 
-        return redirect()->route('tags.index');
+        $tags = $team->tags;
+        return redirect()->route('tags.index',['team' => $team,'tags' => $tags]);
     }
 
     /**
@@ -92,9 +97,11 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy(Team $team, Tag $tag)
     {
         $tag->delete();
-        return redirect()->route('tags.index');
+        
+        $tags = $team->tags;
+        return redirect()->route('tags.index',['team' => $team,'tags' => $tags]);
     }
 }

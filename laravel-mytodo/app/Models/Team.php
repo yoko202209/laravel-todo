@@ -11,7 +11,6 @@ class Team extends Model
     public function users()
     {
         return $this->belongsToMany('App\Models\User','team_user','team_id','user_id');
-        
     }
     public function todos()
     {

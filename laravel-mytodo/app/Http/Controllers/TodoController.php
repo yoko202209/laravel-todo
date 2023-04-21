@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use App\Models\Team;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,7 +75,8 @@ class TodoController extends Controller
      */
     public function edit(Team $team,todo $todo)
     {
-        return view('todos.edit',compact('team','todo'));
+        $tags = $team->tags();
+        return view('todos.edit',compact('team','todo','tags'));
     }
 
     /**
@@ -117,4 +119,15 @@ class TodoController extends Controller
         $todo->save();
         return redirect()->route('todos.index',$team);
     }
+
+    public function add_tag(Request $request, Team $team,Todo $todo)
+    {
+        $todo->tags()->attach($request->input('tag_id'));
+        dd($team->tags());
+        return view('todos.edit',['team' => $team,'todo' => $todo]);
+    }
+
+        
+    
+    
 }

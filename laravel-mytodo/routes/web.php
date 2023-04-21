@@ -25,12 +25,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-/*
-Route::resource('todos', TodoController::class);
-Route::post('todos/{todo}',[TodoController::class,'check'])->name('todos.check');
-*/
-
-//Route::resource('teams', TeamController::class);
 
 Route::middleware(['auth', TeamUser::class])->group(function () {
     Route::resource('teams', TeamController::class)->names([
@@ -40,11 +34,15 @@ Route::middleware(['auth', TeamUser::class])->group(function () {
     ]);
 });
 
+//teams
 Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
 Route::get('/teams/create', [TeamController::class, 'create'])->name('teams.create');
 Route::get('teams/{team}',[TeamController::class,'show'])->name('teams.show');
 Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
 
+Route::post('teams/{team}',[TeamController::class,'add_user'])->name('teams.add_user');
+
+//todos
 Route::get('teams/{team}/todos', [TodoController::class, 'index'])->name('todos.index');
 Route::get('teams/{team}/todos/create', [TodoController::class, 'create'])->name('todos.create');
 Route::post('teams/{team}/todos', [TodoController::class, 'store'])->name('todos.store');
@@ -54,8 +52,15 @@ Route::put('teams/{team}/todos/{todo}', [TodoController::class, 'update'])->name
 Route::delete('teams/{team}/todos/{todo}', [TodoController::class, 'destroy'])->name('todos.destroy');
 
 Route::post('teams/{team}/todos/{todo}',[TodoController::class,'check'])->name('todos.check');
+Route::put('teams/{team}/todos/{todo}/tags', [TodoController::class, 'add_tag'])->name('todos.add_tag');
 
+//tags
+Route::get('teams/{team}/tags', [TagController::class, 'index'])->name('tags.index');
+Route::get('teams/{team}/tags/create', [TagController::class, 'create'])->name('tags.create');
+Route::post('teams/{team}/tags', [TagController::class, 'store'])->name('tags.store');
+Route::get('teams/{team}/tags/{tag}', [TagController::class, 'show'])->name('tags.show');
+Route::get('teams/{team}/tags/{tag}/edit', [TagController::class, 'edit'])->name('tags.edit');
+Route::put('teams/{team}/tags/{tag}', [TagController::class, 'update'])->name('tags.update');
+Route::delete('teams/{team}/tags/{tag}', [TagController::class, 'destroy'])->name('tags.destroy');
 
-Route::post('teams/{team}',[TeamController::class,'add_user'])->name('teams.add_user');
-
-Route::resource('tags', TagController::class);
+//Route::resource('tags', TagController::class);

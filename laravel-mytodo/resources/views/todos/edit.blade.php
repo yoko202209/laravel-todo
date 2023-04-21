@@ -17,13 +17,27 @@
               <label class="form-label" for="dead_line">dead_line</label>
               <input class="form-control" type="date" id="dead_line" name="dead_line">
             </div>
-            <div class="mb-3">
-              <input class="form-check-input" type="checkbox" name="is_share" value="1" id="is_share">
-              <label class="form-check-label" for="is_share">is_share</label>
-            </div>
             <button class="btn btn-success" type="submit">更新</button>
           </form>
+          <hr>
+
+          
+          <!--ここからタグ編集フォーム-->
+          <form action="{{route('todos.add_tag',[ 'team' => $team ,'todo' => $todo])}}" method="POST" >
+            @csrf
+            @method('PUT')
+            <div class="mb-3">
+              <label class="form-label" for="tag_id">タグ</label>    
+              <select class="form-select" id="tag_id" name="tag_id">
+                @foreach($tags as $tag)
+                  <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                @endforeach
+              </select>
+            </div>
+            <button class="btn btn-success" type="submit">追加</button>
+          </form>
         </div>
+        
       </div>
     </div>
   </div>

@@ -6,7 +6,7 @@
       <div class="card col m-3">
         <div class="card-body">
           <h5 class="card-title">タグ編集</h5>
-          <form action="{{route('tags.update',$tag)}}" method="POST" >
+          <form action="{{route('tags.update',['team' => $team, 'tag' => $tag])}}" method="POST" >
             @csrf
             @method('PUT')
             @csrf

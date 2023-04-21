@@ -3,6 +3,7 @@
 @section('content')
   <div class="container">
     <div>
+      <p>team:{{$team->name}}</p>
       タグ一覧
     </div>
     <div class="row">
@@ -11,18 +12,18 @@
           <div class="card p-1 m-1">
             <div class="card-body">
               <p>{{$tag->name}}</p>
-              <form action="{{route('tags.destroy',$tag)}}" method="POST">
+              <form action="{{route('tags.destroy',['team' => $team,'tag' => $tag])}}" method="POST">
                 @csrf
                 @method('delete')
-                <a class="btn btn-primary" href="{{route('tags.show',$tag)}}">show</a>
-                <a class="btn btn-primary" href="{{route('tags.edit',$tag)}}">edit</a>
+                <a class="btn btn-primary" href="{{route('tags.show',['team' => $team,'tag' => $tag])}}">show</a>
+                <a class="btn btn-primary" href="{{route('tags.edit',['team' => $team,'tag' => $tag])}}">edit</a>
                 <button class="btn btn-danger">delete</button>
               </form>
             </div>
           </div>
         </div>
       @endforeach
-      <a href="{{route('tags.create')}}">タグの作成</a>
+      <a href="{{route('tags.create',$team)}}">タグの作成</a>
     </div>
   </div>
 @endsection

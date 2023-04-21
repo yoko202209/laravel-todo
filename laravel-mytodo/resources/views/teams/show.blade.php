@@ -20,6 +20,19 @@
           </ul>
         </div>
       </div>
+      <div class="card">
+        <div class="card-header">
+          チーム内TAGリスト
+        </div>
+        <div class="card-body">
+          <ul>
+            @foreach ($team->tags as $tag)
+              <li>{{ $tag->name }}</li>
+            @endforeach
+            <a class="btn btn-primary" href="{{route('tags.index',$team)}}">tag一覧へ移動</a>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="row">
       
