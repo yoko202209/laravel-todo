@@ -20,6 +20,9 @@
           </ul>
         </div>
       </div>
+    </div>
+
+    <div class="col m-3">
       <div class="card">
         <div class="card-header">
           チーム内TAGリスト
@@ -32,22 +35,12 @@
             <a class="btn btn-primary" href="{{route('tags.index',$team)}}">tag一覧へ移動</a>
           </ul>
         </div>
-      </div>
+      </div>  
     </div>
+
+    <a href="{{route('posts.index',$team)}}">チーム内チャットに入る</a>
+
     <div class="row">
-      
-      <!--
-      <div class="col m-3">
-        <div class="card">
-          <div class="card-header">
-            チャットルーム
-          </div>
-          <div class="card-body">
-            ここにチャット機能
-          </div>
-        </div>
-      </div>
-      -->
       
       <div class="col m-3">
         <div class="card">

@@ -42,14 +42,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function todos(){
-        return $this->hasMany(Todo::class);
-    }
+    
     
     public function teams()
     {
         //return $this->belongsToMany(Team::class);//なぜか動かない
         return $this->belongsToMany('App\Models\Team','team_user','user_id','team_id');
     }
-    
+
+    public function todos(){
+        return $this->hasMany(Todo::class);
+    }
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
 }

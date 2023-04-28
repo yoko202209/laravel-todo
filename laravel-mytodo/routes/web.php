@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Middleware\TeamUser;
@@ -54,6 +55,7 @@ Route::delete('teams/{team}/todos/{todo}', [TodoController::class, 'destroy'])->
 Route::post('teams/{team}/todos/{todo}',[TodoController::class,'check'])->name('todos.check');
 Route::put('teams/{team}/todos/{todo}/tags', [TodoController::class, 'attach_tag'])->name('todos.attach_tag');
 Route::delete('teams/{team}/todos/{todo}/tags/{tag}', [TodoController::class, 'detach_tag'])->name('todos.detach_tag');
+
 //tags
 Route::get('teams/{team}/tags', [TagController::class, 'index'])->name('tags.index');
 Route::get('teams/{team}/tags/create', [TagController::class, 'create'])->name('tags.create');
@@ -62,5 +64,11 @@ Route::get('teams/{team}/tags/{tag}', [TagController::class, 'show'])->name('tag
 Route::get('teams/{team}/tags/{tag}/edit', [TagController::class, 'edit'])->name('tags.edit');
 Route::put('teams/{team}/tags/{tag}', [TagController::class, 'update'])->name('tags.update');
 Route::delete('teams/{team}/tags/{tag}', [TagController::class, 'destroy'])->name('tags.destroy');
+
+//posts
+Route::get('teams/{team}/posts', [PostController::class, 'index'])->name('posts.index');
+Route::post('teams/{team}/posts', [PostController::class, 'store'])->name('posts.store');
+
+
 
 //Route::resource('tags', TagController::class);
